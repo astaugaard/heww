@@ -3,7 +3,33 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    git: https://github.com/astaugaard/gi-gtk-declarative.git
+    name: gi-gtk-declarative
+    pantry-tree:
+      sha256: 4b801936207febd99ce4a6fe2faaf086f2d8b13f89cecabc63e1cc9ffe0f7fcc
+      size: 2574
+    subdir: gi-gtk-declarative
+    version: 0.7.0
+  original:
+    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    git: https://github.com/astaugaard/gi-gtk-declarative.git
+    subdir: gi-gtk-declarative
+- completed:
+    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    git: https://github.com/astaugaard/gi-gtk-declarative.git
+    name: gi-gtk-declarative-app-simple
+    pantry-tree:
+      sha256: 31d38998eeeaf27283e17ef15189972c5932c415cee08b11acc21d807ce34ab0
+      size: 361
+    subdir: gi-gtk-declarative-app-simple
+    version: 0.7.0
+  original:
+    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    git: https://github.com/astaugaard/gi-gtk-declarative.git
+    subdir: gi-gtk-declarative-app-simple
 snapshots:
 - completed:
     sha256: fc39d8afc97531d53d87b10abdef593bce503c0c1e46c2e9a84ebcbc78bf8470

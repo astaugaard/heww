@@ -22,8 +22,12 @@ description:         Please see the README on GitHub at <https://github.com/gith
 dependencies:
 - haskell-gi-base
 - gi-gtk
-- gi-gdk
+# - gi-gdk
 - gtk-strut
+- gi-gtk-declarative
+- gi-gtk-declarative-app-simple
+- mtl
+- transformers
 - base >= 4.7 && < 5
 
 ghc-options:
@@ -36,6 +40,9 @@ ghc-options:
 - -Wmissing-home-modules
 - -Wpartial-fields
 - -Wredundant-constraints
+
+library:
+    source-dirs: src
 
 executables:
   bar-exe:
