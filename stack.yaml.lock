@@ -5,7 +5,7 @@
 
 packages:
 - completed:
-    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    commit: 5182400c7e48a2aa315fca061f38758e7dbfa545
     git: https://github.com/astaugaard/gi-gtk-declarative.git
     name: gi-gtk-declarative
     pantry-tree:
@@ -14,22 +14,22 @@ packages:
     subdir: gi-gtk-declarative
     version: 0.7.0
   original:
-    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    commit: 5182400c7e48a2aa315fca061f38758e7dbfa545
     git: https://github.com/astaugaard/gi-gtk-declarative.git
     subdir: gi-gtk-declarative
 - completed:
-    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    commit: 5182400c7e48a2aa315fca061f38758e7dbfa545
     git: https://github.com/astaugaard/gi-gtk-declarative.git
-    name: gi-gtk-declarative-app-simple
+    name: gi-gtk-declarative-app-state
     pantry-tree:
-      sha256: 31d38998eeeaf27283e17ef15189972c5932c415cee08b11acc21d807ce34ab0
-      size: 361
-    subdir: gi-gtk-declarative-app-simple
+      sha256: 5fc3f08c2d859e7e6ef9e034a1fff1aedd786c0a07d2409454119126e90eaad1
+      size: 359
+    subdir: gi-gtk-declarative-app-state
     version: 0.7.0
   original:
-    commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+    commit: 5182400c7e48a2aa315fca061f38758e7dbfa545
     git: https://github.com/astaugaard/gi-gtk-declarative.git
-    subdir: gi-gtk-declarative-app-simple
+    subdir: gi-gtk-declarative-app-state
 snapshots:
 - completed:
     sha256: fc39d8afc97531d53d87b10abdef593bce503c0c1e46c2e9a84ebcbc78bf8470

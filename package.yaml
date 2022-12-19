@@ -25,9 +25,17 @@ dependencies:
 # - gi-gdk
 - gtk-strut
 - gi-gtk-declarative
-- gi-gtk-declarative-app-simple
+- gi-gtk-declarative-app-state
 - mtl
 - transformers
+- text
+- vector
+- async
+- stm
+- pipes
+- unix
+- X11
+- lifted-base
 - base >= 4.7 && < 5
 
 ghc-options:
@@ -43,15 +51,28 @@ ghc-options:
 
 library:
     source-dirs: src
+    c-sources: src/volumeFunction.c
+    extra-libraries: pulse
 
 executables:
   bar-exe:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
+    - --make
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    dependencies:
+        - bar
+  # volumeTest-exe:
+  #     main: Volume.hs
+  #     soure-dirs: app
+  #     ghc-options:
+  #     - -threaded
+  #     - -rtsopts
+  #     - -with-rtsopts=-N
+
 tests:
   bar-test:
     main:                Spec.hs

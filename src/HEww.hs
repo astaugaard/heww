@@ -1,18 +1,50 @@
+{-# LANGUAGE OverloadedLabels #-}
+module HEww ( StrutConfig(..)
+            , StrutAlignment(..)
+            , StrutSize(..)
+            , StrutPosition(..)
+            , runHEww
+            , DataSource(..)
+            , startApp
+            , defaultStrutConfig
+            ) where
+import Graphics.UI.GIGtkStrut
+import GI.Gtk.Declarative.App.State
+-- import GI.Gtk.Declarative.Widget
+import GI.Gtk.Declarative
+import Data.Text (Text)
+import System.Posix.Signals
+import HEww.Core
+import qualified GI.Gtk as Gtk
+import qualified Control.Concurrent.Async as Async
+import Control.Exception (finally)
+import Control.Monad (void)
 
-module HEww where
-import qualified GI.Gtk.Declarative.App.Simple as A
-import qualified GI.Gtk.Declarative as G
 
-type UpdateM state a = StateT state Maybe a
+runHEww :: ([DataSource a] -> IO a)
+       -> IO a
+runHEww f = f []
 
-data App state = App {widgets :: state -> G.Widget (UpdateM ()), initialState :: state, inputs :: [Producer (UpdateM ()) IO ()]}
 
-run :: (G.Widget a -> Bin window a) -> App state -> IO state
-run b (App widgets initialState inputs) = A.run $ A.App
-    {
-        update = \s e -> let ((_,w),s') = runState s $ runWriterT e
-                         in if getAny w then Exit else Transition s' (return Nothing),
-        view = \s -> b $ widgets s,
-        inputs = inputs,
-        initialState = initialState
-    }
+startApp :: Text -> StrutConfig -> (a -> Widget (UpdateM a ())) -> a -> [DataSource a] -> IO a
+startApp name struts aview startState dataSources =
+  do let cleanUpAll = (traverse cleanUp dataSources >> Gtk.mainQuit)
+
+     void $ Gtk.init Nothing
+     void $ Async.async Gtk.main
+
+     window <- buildStrutWindow struts
+     window `Gtk.set` [#name Gtk.:= name, #decorated Gtk.:= False]
+     void $ Gtk.on window #destroy cleanUpAll
+
+     #showAll window
+                                                            -- don't know a better way of doing this
+     void $ installHandler sigINT (CatchOnce $ cleanUpAll >> raiseSignal sigINT) Nothing -- cleanup if killed with ^C
+
+     (runLoop (App {view = aview,
+                    initialState = startState,
+                    inputs = (map producer dataSources)})
+              window)
+           `finally` cleanUpAll
+
+

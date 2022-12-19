@@ -42,10 +42,10 @@ packages:
 #
 extra-deps:
 - git: https://github.com/astaugaard/gi-gtk-declarative.git
-  commit: 8dabdda0a26489e7d75a330f6dda3bb531955d13
+  commit: 5182400c7e48a2aa315fca061f38758e7dbfa545
   subdirs:
   - gi-gtk-declarative
-  - gi-gtk-declarative-app-simple
+  - gi-gtk-declarative-app-state
 
 
 # Override default flag values for local packages and extra-deps
@@ -74,4 +74,4 @@ extra-deps:
 
 nix:
     enable: true
-    packages: [zlib pkg-config gtk2 gtk3 gobject-introspection, xorg.libX11, xorg.libXScrnSaver]
+    packages: [zlib pkg-config gtk2 gtk3 gobject-introspection, xorg.libX11, xorg.libXScrnSaver, libpulseaudio ]
