@@ -36,6 +36,9 @@ dependencies:
 - unix
 - X11
 - lifted-base
+- process
+- time
+- containers
 - base >= 4.7 && < 5
 
 ghc-options:

@@ -1,6 +1,6 @@
 -- {-# LANGUAGE CApiFFI #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
-module HEww.PulseAudio (runVolumeHandle, closeHandle, VolumeHandle, getVolumeHandle, changeVolumeBy) where
+module HEww.PulseAudio (VolumeHandle, getCurrentVolume, changeVolumeBy) where
 
 import Foreign.Ptr
 import HEww.Core
@@ -28,8 +28,8 @@ closeHandle :: VolumeHandle -> IO ()
 closeHandle (VolumeHandle fw hp) = do closeHandle' hp
                                       freeHaskellFunPtr fw
 
-getVolumeHandle :: (Bool -> Float -> UpdateM a ()) -> (VolumeHandle -> [DataSource a] -> IO a) -> [DataSource a] -> IO a
-getVolumeHandle f = addDataSourceWithHandle $
+getCurrentVolume :: (Bool -> Float -> UpdateM a ()) -> DataSourceExtensionWithHandle VolumeHandle a
+getCurrentVolume f = addDataSourceWithHandle $
     do tq <- atomically $ newTQueue
        vh <- runVolumeHandle (\muted volume -> pushInputToTQueue tq (f muted volume))
        return $ (DataSource (tQueueToProducer tq) (closeHandle vh),vh)

@@ -27,6 +27,7 @@ library
   exposed-modules:
       HEww
       HEww.Core
+      HEww.Polls
       HEww.PulseAudio
       HEww.X11
   other-modules:
@@ -42,6 +43,7 @@ library
       X11
     , async
     , base >=4.7 && <5
+    , containers
     , gi-gtk
     , gi-gtk-declarative
     , gi-gtk-declarative-app-state
@@ -50,8 +52,10 @@ library
     , lifted-base
     , mtl
     , pipes
+    , process
     , stm
     , text
+    , time
     , transformers
     , unix
     , vector
@@ -69,6 +73,7 @@ executable bar-exe
     , async
     , bar
     , base >=4.7 && <5
+    , containers
     , gi-gtk
     , gi-gtk-declarative
     , gi-gtk-declarative-app-state
@@ -77,8 +82,10 @@ executable bar-exe
     , lifted-base
     , mtl
     , pipes
+    , process
     , stm
     , text
+    , time
     , transformers
     , unix
     , vector
@@ -96,6 +103,7 @@ test-suite bar-test
       X11
     , async
     , base >=4.7 && <5
+    , containers
     , gi-gtk
     , gi-gtk-declarative
     , gi-gtk-declarative-app-state
@@ -104,8 +112,10 @@ test-suite bar-test
     , lifted-base
     , mtl
     , pipes
+    , process
     , stm
     , text
+    , time
     , transformers
     , unix
     , vector
