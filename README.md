@@ -1,4 +1,4 @@
-# bar
+# HEww
 A small library for writing bars/desktop widgets in haskell using gi-gtk-declarative.
 
 ## Installing library
