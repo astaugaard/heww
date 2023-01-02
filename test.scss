@@ -1,0 +1,128 @@
+@import "colors";
+
+window {
+    font-family: monospace;
+    background-color: transparent;
+};
+
+scale trough {
+    background-color: $color1;
+    min-height: 5px;
+    border-radius: 5px;
+}
+
+scale trough highlight {
+    background-color: $color2;
+}
+
+.icon {
+    font-size: 20px;
+}
+
+.bar {
+    background-color: transparent;
+    color: $foreground;
+}
+
+.island {
+    background-color: $background;
+    padding: 3 30px 3 30px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.windowname > .icon {
+    color: $color1;
+}
+
+.time > .icon {
+    color: $color2;
+}
+
+.cpu > .icon {
+    color: $color6;
+}
+
+.temp > .icon {
+    color: $color9;
+}
+
+.sound > .icon {
+    color: $color13;
+}
+
+button {
+    all: unset;
+    background-color: transparent;
+    padding: 4px;
+    padding-left: 7px;
+    font-size: 20px;
+}
+
+.dash {
+    background-color: transparent;
+    font-family: "Fira-Code-Regular";
+    color: $foreground;
+};
+
+.app {
+    border-radius: 20px;
+    background-color: $background;
+    padding: 20px
+}
+
+.block {
+    background-color: $background;
+    border-radius: 30px;
+    padding: 30px;
+};
+
+.photo > image {
+    border-radius: 50px;
+};
+
+circular-progress {
+    font-size: 40px;
+    background-color: darken($background,5%);
+};
+
+circular-progress.color1 {
+    color: $color1;
+};
+
+circular-progress.color2 {
+    color: $color2;
+};
+
+
+circular-progress.color3 {
+    color: $color3;
+};
+
+
+circular-progress.color4 {
+    color: $color4;
+};
+
+.network {
+    padding: 10px;
+    font-size: 30px;
+};
+
+.upload {
+    color: $color5;
+};
+
+.download {
+    color: $color6;
+};
+
+calendar {
+    color: white;
+    border-style: none;
+};
+
+calendar:selected {
+    background-color: darken($background,5%);
+};
+

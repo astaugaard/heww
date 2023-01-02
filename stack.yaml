@@ -74,4 +74,4 @@ extra-deps:
 
 nix:
     enable: true
-    packages: [zlib pkg-config gtk2 gtk3 gobject-introspection, xorg.libX11, xorg.libXScrnSaver, libpulseaudio ]
+    packages: [zlib pkg-config gtk2 gtk3 gobject-introspection, xorg.libX11, xorg.libXScrnSaver, libpulseaudio, lm_sensors]

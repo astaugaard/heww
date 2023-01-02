@@ -26,9 +26,11 @@ dependencies:
 - gtk-strut
 - gi-gtk-declarative
 - gi-gtk-declarative-app-state
+- gi-gdk
+- gi-gobject
 - mtl
 - transformers
-- text
+- text >= 2.0.1 && <= 2.0.1
 - vector
 - async
 - stm
@@ -39,6 +41,7 @@ dependencies:
 - process
 - time
 - containers
+- bytestring
 - base >= 4.7 && < 5
 
 ghc-options:
@@ -54,8 +57,10 @@ ghc-options:
 
 library:
     source-dirs: src
-    c-sources: src/volumeFunction.c
-    extra-libraries: pulse
+    c-sources:
+    - cbits/volumeFunction.c
+    - cbits/sensorUtils.c
+    extra-libraries: pulse sensors
 
 executables:
   bar-exe:

@@ -1,6 +1,6 @@
 -- {-# LANGUAGE CApiFFI #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
-module HEww.PulseAudio (VolumeHandle, getCurrentVolume, changeVolumeBy) where
+module HEww.PulseAudio (VolumeHandle, getCurrentVolume, changeVolumeBy, setVolume) where
 
 import Foreign.Ptr
 import HEww.Core
@@ -18,6 +18,7 @@ foreign import ccall "wrapper" createVolumeHandle :: (Bool -> Float -> IO ()) ->
 foreign import ccall safe "run_volume_handle" runVolumeHandle' :: FunPtr (Bool -> Float -> IO ()) -> IO (Ptr VolumeHandlePtrType)
 foreign import ccall safe "close_handle" closeHandle' :: (Ptr VolumeHandlePtrType) -> IO ()
 foreign import ccall safe "changeVolumeBy" changeVolumeBy' :: (Ptr VolumeHandlePtrType) -> Float -> IO ()
+foreign import ccall safe "setVolume" setVolume' :: (Ptr VolumeHandlePtrType) -> Float -> IO ()
 
 runVolumeHandle :: (Bool -> Float -> IO ()) -> IO VolumeHandle
 runVolumeHandle f = do fw <- createVolumeHandle f
@@ -36,3 +37,7 @@ getCurrentVolume f = addDataSourceWithHandle $
 
 changeVolumeBy :: VolumeHandle -> Float -> IO ()
 changeVolumeBy (VolumeHandle _ ptr) f = changeVolumeBy' ptr f
+
+setVolume :: VolumeHandle -> Float -> IO ()
+setVolume (VolumeHandle _ ptr) f = setVolume' ptr f
+

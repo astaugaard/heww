@@ -31,6 +31,26 @@ void changeVolumeCallback(pa_context *c, const pa_sink_info *i, int num, void *u
     // free(f);
 }
 
+void setVolumeCallback(pa_context *c, const pa_sink_info *i, int num, void *userdat) {
+    float* f = (float*)userdat;
+    if (i) {
+        pa_cvolume v = i->volume;
+        pa_volume_t newVolume = (int32_t)((float)PA_VOLUME_NORM * *f);
+        pa_cvolume_set(&v,v.channels,newVolume);
+        pa_context_set_sink_volume_by_index(c,i->index,&v,success,userdat);
+    }
+}
+
+void setVolume(struct ListenerData* dat, float v) {
+    if (!dat) {
+        fprintf(stderr, "default sink name not yet fetched");
+        return;
+    };
+    float* f = malloc(sizeof (float));
+    *f = v;
+    pa_context_get_sink_info_by_name(dat->context,dat->defaultSink,changeVolumeCallback,f);
+}
+
 void changeVolumeBy(struct ListenerData* dat, float v) {
     if (!dat) {
         fprintf(stderr, "default sink name not yet fetched");

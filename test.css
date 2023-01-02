@@ -1,0 +1,97 @@
+window {
+  font-family: monospace;
+  background-color: transparent; }
+
+scale trough {
+  background-color: #f38ba8;
+  min-height: 5px;
+  border-radius: 5px; }
+
+scale trough highlight {
+  background-color: #a6e3a1; }
+
+.icon {
+  font-size: 20px; }
+
+.bar {
+  background-color: transparent;
+  color: #cdd6f4; }
+
+.island {
+  background-color: #11111b;
+  padding: 3 30px 3 30px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px; }
+
+.windowname > .icon {
+  color: #f38ba8; }
+
+.time > .icon {
+  color: #a6e3a1; }
+
+.cpu > .icon {
+  color: #94e2d5; }
+
+.temp > .icon {
+  color: #f38ba8; }
+
+.sound > .icon {
+  color: #f5c2e7; }
+
+button {
+  all: unset;
+  background-color: transparent;
+  padding: 4px;
+  padding-left: 7px;
+  font-size: 20px; }
+
+.dash {
+  background-color: transparent;
+  font-family: "Fira-Code-Regular";
+  color: #cdd6f4; }
+
+.app {
+  border-radius: 20px;
+  background-color: #11111b;
+  padding: 20px; }
+
+.block {
+  background-color: #11111b;
+  border-radius: 30px;
+  padding: 30px; }
+
+.photo > image {
+  border-radius: 50px; }
+
+circular-progress {
+  font-size: 40px;
+  background-color: #07070b; }
+
+circular-progress.color1 {
+  color: #f38ba8; }
+
+circular-progress.color2 {
+  color: #a6e3a1; }
+
+circular-progress.color3 {
+  color: #f9e2af; }
+
+circular-progress.color4 {
+  color: #89b4fa; }
+
+.network {
+  padding: 10px;
+  font-size: 30px; }
+
+.upload {
+  color: #f6c2e7; }
+
+.download {
+  color: #94e2d5; }
+
+calendar {
+  color: white;
+  border-style: none; }
+
+calendar:selected {
+  background-color: #07070b; }

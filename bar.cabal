@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.35.0.
+-- This file has been generated from package.yaml by hpack version 0.35.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -29,6 +29,9 @@ library
       HEww.Core
       HEww.Polls
       HEww.PulseAudio
+      HEww.Sensors
+      HEww.Widgets.Hover
+      HEww.Widgets.Scale
       HEww.X11
   other-modules:
       Paths_bar
@@ -36,14 +39,18 @@ library
       src
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   c-sources:
-      src/volumeFunction.c
+      cbits/volumeFunction.c
+      cbits/sensorUtils.c
   extra-libraries:
-      pulse
+      pulse sensors
   build-depends:
       X11
     , async
     , base >=4.7 && <5
+    , bytestring
     , containers
+    , gi-gdk
+    , gi-gobject
     , gi-gtk
     , gi-gtk-declarative
     , gi-gtk-declarative-app-state
@@ -54,7 +61,7 @@ library
     , pipes
     , process
     , stm
-    , text
+    , text >=2.0.1 && <=2.0.1
     , time
     , transformers
     , unix
@@ -73,7 +80,10 @@ executable bar-exe
     , async
     , bar
     , base >=4.7 && <5
+    , bytestring
     , containers
+    , gi-gdk
+    , gi-gobject
     , gi-gtk
     , gi-gtk-declarative
     , gi-gtk-declarative-app-state
@@ -84,7 +94,7 @@ executable bar-exe
     , pipes
     , process
     , stm
-    , text
+    , text >=2.0.1 && <=2.0.1
     , time
     , transformers
     , unix
@@ -103,7 +113,10 @@ test-suite bar-test
       X11
     , async
     , base >=4.7 && <5
+    , bytestring
     , containers
+    , gi-gdk
+    , gi-gobject
     , gi-gtk
     , gi-gtk-declarative
     , gi-gtk-declarative-app-state
@@ -114,7 +127,7 @@ test-suite bar-test
     , pipes
     , process
     , stm
-    , text
+    , text >=2.0.1 && <=2.0.1
     , time
     , transformers
     , unix

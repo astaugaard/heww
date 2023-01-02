@@ -1,5 +1,5 @@
 {-# LANGUAGE BangPatterns #-}
-module HEww.Polls (pollCpu,pollTime,pollComand,pollRegularly)where
+module HEww.Polls (pollCpu,pollTime,pollComand,pollRegularly,runPoll) where
     
 import HEww.Core
 import System.Process hiding (runCommand)
@@ -7,7 +7,6 @@ import Control.Concurrent (threadDelay)
 import Pipes
 import Data.Time.Clock
 import System.IO (hGetContents, hClose)
-import Debug.Trace
 
 runPoll :: UpdateM a () -> Int -> Producer (UpdateM a ()) IO ()
 runPoll u seconds = do yield u
@@ -36,9 +35,8 @@ getCpuPercent = do !before <- map read . tail . words . head . lines <$> readFil
                    let dif = zipWith (-) after before :: [Float]
                        total = sum dif
                        idle = dif !! 3 + dif !! 4
-                   print dif
                    return $ floor $ (1 - (idle / total)) * 100
 
 pollCpu :: (Int -> UpdateM a ()) -> Int -> DataSourceExtension a
-pollCpu f = pollRegularly (liftIO (putStrLn "getting cpu percent") >> liftIO getCpuPercent >>= f)
+pollCpu f = pollRegularly (liftIO getCpuPercent >>= f)
 
