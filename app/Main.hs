@@ -62,7 +62,7 @@ cpu v = displayInfo "cpu" "\xf109" $ fromString $ (show (cpuUsage v) ++ "%")
 time v = displayInfo "time" "\xf073" $ timeString v
 
 soundSlider :: AppState -> Widget (UpdateM AppState ())
-soundSlider v = (\f -> liftIO $ setVolume (soundHandle v) $ realToFrac f) <$> (scale [#widthRequest := 100] $ ScaleSettings 100 0 (realToFrac $ soundLevel v) Gtk.OrientationHorizontal)
+soundSlider v = (\f -> setVolume (soundHandle v) $ realToFrac f) <$> (scale [#widthRequest := 100] $ ScaleSettings 100 0 (realToFrac $ soundLevel v) Gtk.OrientationHorizontal)
 
 updateEvent :: UpdateM AppState ()
 updateEvent = do liftIO $ putStrLn "hello world"
