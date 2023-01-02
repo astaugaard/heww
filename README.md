@@ -144,3 +144,6 @@ tQueueToProducer :: TQueue a -> Producer a IO ()
 tChanToProducer :: TChan a -> Producer a IO ()
 tQueueOuputToProducer :: (TQueue a -> IO ()) -> Producer a IO ()
 ```
+
+# Contributing
+Any contributions are welcome (even if it is just correcting my awful spelling).
