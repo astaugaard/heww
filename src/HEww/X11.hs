@@ -1,5 +1,17 @@
 {-# LANGUAGE ExistentialQuantification,TupleSections,ScopedTypeVariables #-}
-module HEww.X11 (getX11DataSources, windowTitle, workspaces,X11Handle,changeWorkspace, WorkspaceInfo(..), WorkspaceStatus(..)) where
+module HEww.X11 (getX11DataSources,
+                 windowTitle,
+                 workspaces,
+                 X11Handle,
+                 changeWorkspace,
+                 WorkspaceInfo(..),
+                 WorkspaceStatus(..),
+                 X11DataSource(..),
+                 Event(..),
+                 X11DataSourceM(..),
+                 addEventDependency,
+                 removeDependency
+                 ) where
     
 import Graphics.X11.Xlib.Event
 import Graphics.X11.Xlib

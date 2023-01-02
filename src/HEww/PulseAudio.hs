@@ -6,6 +6,7 @@ import Foreign.Ptr
 import HEww.Core
 import Control.Concurrent.STM.TQueue
 import Control.Concurrent.STM
+import Control.Monad.IO.Class
 -- import Pipes
 
 data VolumeHandlePtrType
@@ -35,9 +36,9 @@ getCurrentVolume f = addDataSourceWithHandle $
        vh <- runVolumeHandle (\muted volume -> pushInputToTQueue tq (f muted volume))
        return $ (DataSource (tQueueToProducer tq) (closeHandle vh),vh)
 
-changeVolumeBy :: VolumeHandle -> Float -> IO ()
-changeVolumeBy (VolumeHandle _ ptr) f = changeVolumeBy' ptr f
+changeVolumeBy :: VolumeHandle -> Float -> UpdateM a ()
+changeVolumeBy (VolumeHandle _ ptr) f = liftIO $ changeVolumeBy' ptr f
 
-setVolume :: VolumeHandle -> Float -> IO ()
-setVolume (VolumeHandle _ ptr) f = setVolume' ptr f
+setVolume :: VolumeHandle -> Float -> UpdateM a ()
+setVolume (VolumeHandle _ ptr) f = liftIO $ setVolume' ptr f
 
